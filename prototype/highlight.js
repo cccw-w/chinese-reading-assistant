@@ -1,7 +1,15 @@
-function run() {
-    alert("Bookmarklet Loaded!");
+function walk(node) {
+    if (node.nodeType === 3) {
+        if (node.textContent.includes("你")) {
+            const span = document.createElement("span");
+            span.style.background = "yellow";
+            span.textContent = node.textContent;
 
-    document.body.style.background = "#fff7a3";
+            node.parentNode.replaceChild(span, node);
+        }
+    } else {
+        node.childNodes.forEach(walk);
+    }
 }
 
-run();
+walk(document.body);
