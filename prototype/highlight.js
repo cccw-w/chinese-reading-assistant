@@ -1,4 +1,15 @@
-document.body.innerHTML = document.body.innerHTML.replace(
-"你",
-"<span style='background: yellow'>你</span>"
-);
+function walk(node) {
+    if (node.nodeType === 3) {
+        if (node.textContent.includes("你")) {
+            const span = document.createElement("span");
+            span.style.background = "yellow";
+            span.textContent = node.textContent;
+
+            node.parentNode.replaceChild(span, node);
+        }
+    } else {
+        node.childNodes.forEach(walk);
+    }
+}
+
+walk(document.body);
