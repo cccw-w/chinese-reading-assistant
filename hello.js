@@ -1,1 +1,1 @@
-alert("Hello");
+javascript:alert("Hello AO3");
