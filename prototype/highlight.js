@@ -54,4 +54,3 @@ console.table(
 );
 
 console.log(chineseTexts);
-console.log("Hi");
