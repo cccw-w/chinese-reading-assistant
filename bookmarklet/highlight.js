@@ -54,3 +54,25 @@ console.table(
 );
 
 console.log(chineseTexts);
+
+fetch("http://localhost:3000/segment", {
+
+    method: "POST",
+
+    headers: {
+        "Content-Type":"application/json"
+    },
+
+    body: JSON.stringify({
+
+        text:"我喜欢看小说"
+
+    })
+
+})
+.then(res => res.json())
+.then(data => {
+
+    console.log(data);
+
+});
