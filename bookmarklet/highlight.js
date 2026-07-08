@@ -42,6 +42,10 @@ function walk(node) {
 // เริ่มทำงาน
 walk(document.body);
 
+const texts = chineseTexts.map(item => item.text);
+
+console.log(texts);
+
 // แสดงผล
 console.clear();
 
@@ -56,23 +60,18 @@ console.table(
 console.log(chineseTexts);
 
 fetch("http://localhost:3000/segment", {
-
     method: "POST",
-
     headers: {
-        "Content-Type":"application/json"
+        "Content-Type": "application/json"
     },
-
     body: JSON.stringify({
-
-        text:"我喜欢看小说"
-
+        texts: texts
     })
-
 })
 .then(res => res.json())
 .then(data => {
-
     console.log(data);
-
+})
+.catch(error => {
+    console.error(error);
 });
